@@ -1,781 +1,467 @@
 -- phpMyAdmin SQL Dump
-
--- version 5.1.1
-
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
-
 --
-
--- 主机： 127.0.0.1
-
--- 生成日期： 2022-07-29 12:57:42
-
--- 服务器版本： 10.4.21-MariaDB
-
--- PHP 版本： 8.0.12
+-- Hôte : 127.0.0.1
+-- Généré le : dim. 17 sep. 2023 à 16:25
+-- Version du serveur : 10.4.27-MariaDB
+-- Version de PHP : 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-
 START TRANSACTION;
-
 SET time_zone = "+00:00";
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */
 
-;
-
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */
-
-;
-
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */
-
-;
-
-/*!40101 SET NAMES utf8mb4 */
-
-;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
-
--- 数据库： `newdatabase`
-
+-- Base de données : `newdatabase`
 --
 
 -- --------------------------------------------------------
 
 --
-
--- 表的结构 `city`
-
+-- Structure de la table `city`
 --
 
-CREATE TABLE
-    `city` (
-        `id` int(11) NOT NULL,
-        `label` text NOT NULL,
-        `value` text NOT NULL,
-        `pid` int(11) NOT NULL
-    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+CREATE TABLE `city` (
+  `id` int(11) NOT NULL,
+  `label` text NOT NULL,
+  `value` text NOT NULL,
+  `pid` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
-
--- 转存表中的数据 `city`
-
+-- Déchargement des données de la table `city`
 --
 
-INSERT INTO
-    `city` (`id`, `label`, `value`, `pid`)
-VALUES (11, '南京', 'nanjig', 1), (12, '苏州', 'suzhou', 1), (21, '杭州', 'hangzhou', 2), (22, '温州', 'wenzhou', 2), (11, '南京', 'nanjig', 1), (12, '苏州', 'suzhou', 1), (21, '杭州', 'hangzhou', 2), (22, '温州', 'wenzhou', 2);
-
--- --------------------------------------------------------
-
---
-
--- 表的结构 `hotwords`
-
---
-
-CREATE TABLE
-    `trending` (
-        `name` text NOT NULL,
-        `value` int(11) NOT NULL
-    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
-
---
-
--- 转存表中的数据 `hotwords`
-
---
-
-INSERT INTO
-    `trending` (`name`, `value`)
-VALUES ('iPhone', 2000), ('手机', 8000), ('键盘', 2560), ('耳机', 5000), ('运动鞋', 10000), ('李宁', 7100), ('安踏', 7100), ('无线耳机', 6000), ('抽纸', 3600), ('洗衣液', 4800), ('游戏键盘', 5000), ('零食', 2600), ('nike', 2300), ('iPhone', 2000), ('手机', 8000), ('键盘', 2560), ('耳机', 5000), ('运动鞋', 10000), ('李宁', 7100), ('安踏', 7100), ('无线耳机', 6000), ('抽纸', 3600), ('洗衣液', 4800), ('游戏键盘', 5000), ('零食', 2600), ('nike', 2300);
+INSERT INTO `city` (`id`, `label`, `value`, `pid`) VALUES
+(11, '南京', 'nanjig', 1),
+(12, '苏州', 'suzhou', 1),
+(21, '杭州', 'hangzhou', 2),
+(22, '温州', 'wenzhou', 2),
+(11, '南京', 'nanjig', 1),
+(12, '苏州', 'suzhou', 1),
+(21, '杭州', 'hangzhou', 2),
+(22, '温州', 'wenzhou', 2);
 
 -- --------------------------------------------------------
 
 --
-
--- 表的结构 `mapsales`
-
+-- Structure de la table `hotwords`
 --
 
-CREATE TABLE
-    `mapsales` (
-        `name` text NOT NULL,
-        `lng` text NOT NULL,
-        `lat` text NOT NULL,
-        `value` text NOT NULL
-    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+CREATE TABLE `hotwords` (
+  `name` text NOT NULL,
+  `value` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
-
--- 转存表中的数据 `mapsales`
-
+-- Déchargement des données de la table `hotwords`
 --
 
-INSERT INTO
-    `mapsales` (`name`, `lng`, `lat`, `value`)
-VALUES (
-        '山东',
-        '117.000923\r\n',
-        '36.675807\r\n',
-        '2000'
-    ), (
-        '河北',
-        '114.502461\r\n',
-        '38.045474\r\n',
-        '1000'
-    ), (
-        '安徽',
-        '117.283042\r\n',
-        '31.86119\r\n',
-        '3000'
-    ), (
-        '陕西',
-        '108.948024\r\n',
-        '34.263161\r\n',
-        '3000'
-    ), (
-        '江苏',
-        '118.767413\r\n\r\n',
-        '32.041544',
-        '5000'
-    ), (
-        '山东',
-        '117.000923\r\n',
-        '36.675807\r\n',
-        '2000'
-    ), (
-        '河北',
-        '114.502461\r\n',
-        '38.045474\r\n',
-        '1000'
-    ), (
-        '安徽',
-        '117.283042\r\n',
-        '31.86119\r\n',
-        '3000'
-    ), (
-        '陕西',
-        '108.948024\r\n',
-        '34.263161\r\n',
-        '3000'
-    ), (
-        '江苏',
-        '118.767413\r\n\r\n',
-        '32.041544',
-        '5000'
-    );
+INSERT INTO `hotwords` (`name`, `value`) VALUES
+('iPhone', 2000),
+('手机', 8000),
+('键盘', 2560),
+('耳机', 5000),
+('运动鞋', 10000),
+('李宁', 7100),
+('安踏', 7100),
+('无线耳机', 6000),
+('抽纸', 3600),
+('洗衣液', 4800),
+('游戏键盘', 5000),
+('零食', 2600),
+('nike', 2300),
+('iPhone', 2000),
+('手机', 8000),
+('键盘', 2560),
+('耳机', 5000),
+('运动鞋', 10000),
+('李宁', 7100),
+('安踏', 7100),
+('无线耳机', 6000),
+('抽纸', 3600),
+('洗衣液', 4800),
+('游戏键盘', 5000),
+('零食', 2600),
+('nike', 2300);
 
 -- --------------------------------------------------------
 
 --
-
--- 表的结构 `menu`
-
+-- Structure de la table `mapsales`
 --
 
-CREATE TABLE
-    `menu` (
-        `id` int(11) NOT NULL,
-        `pid` int(11) NOT NULL,
-        `name` text NOT NULL,
-        `linkUrl` text NOT NULL,
-        `openType` text NOT NULL,
-        `icon` text NOT NULL,
-        `isOfAdmin` text NOT NULL
-    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+CREATE TABLE `mapsales` (
+  `name` text NOT NULL,
+  `lng` text NOT NULL,
+  `lat` text NOT NULL,
+  `value` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
-
--- 转存表中的数据 `menu`
-
+-- Déchargement des données de la table `mapsales`
 --
 
-INSERT INTO
-    `menu` (
-        `id`,
-        `pid`,
-        `name`,
-        `linkUrl`,
-        `openType`,
-        `icon`,
-        `isOfAdmin`
-    )
-VALUES (
-        5,
-        -1,
-        '系统设置',
-        '/',
-        '1',
-        'SettingOutlined',
-        '1'
-    ), (
-        12,
-        5,
-        '菜单管理',
-        '/setting/menu',
-        '1',
-        'AlignLeftOutlined',
-        '1'
-    ), (
-        23,
-        5,
-        '用户管理',
-        '/setting/user',
-        '1',
-        'UserOutlined',
-        '1'
-    ), (
-        24,
-        -1,
-        '业务管理',
-        '/',
-        '1',
-        'AimOutlined',
-        '2'
-    ), (
-        25,
-        24,
-        '商品管理',
-        '/business/product',
-        '1',
-        'GiftOutlined',
-        '2'
-    ), (
-        26,
-        24,
-        '业务概览',
-        '/business/overview',
-        '1',
-        'EyeOutlined',
-        '2'
-    );
+INSERT INTO `mapsales` (`name`, `lng`, `lat`, `value`) VALUES
+('山东', '117.000923\r\n', '36.675807\r\n', '2000'),
+('河北', '114.502461\r\n', '38.045474\r\n', '1000'),
+('安徽', '117.283042\r\n', '31.86119\r\n', '3000'),
+('陕西', '108.948024\r\n', '34.263161\r\n', '3000'),
+('江苏', '118.767413\r\n\r\n', '32.041544', '5000'),
+('山东', '117.000923\r\n', '36.675807\r\n', '2000'),
+('河北', '114.502461\r\n', '38.045474\r\n', '1000'),
+('安徽', '117.283042\r\n', '31.86119\r\n', '3000'),
+('陕西', '108.948024\r\n', '34.263161\r\n', '3000'),
+('江苏', '118.767413\r\n\r\n', '32.041544', '5000');
 
 -- --------------------------------------------------------
 
 --
-
--- 表的结构 `product`
-
+-- Structure de la table `menu`
 --
 
-CREATE TABLE
-    `product` (
-        `id` int(11) NOT NULL,
-        `name` text NOT NULL,
-        `type` text NOT NULL,
-        `attrs` text NOT NULL,
-        `mainPic` text DEFAULT NULL,
-        `morePic` text DEFAULT NULL,
-        `isOnShelf` text NOT NULL,
-        `price` text DEFAULT NULL,
-        `descs` text NOT NULL
-    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+CREATE TABLE `menu` (
+  `id` int(11) NOT NULL,
+  `pid` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `linkUrl` text NOT NULL,
+  `openType` text NOT NULL,
+  `icon` text NOT NULL,
+  `isOfAdmin` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
-
--- 转存表中的数据 `product`
-
+-- Déchargement des données de la table `menu`
 --
 
-INSERT INTO
-    `product` (
-        `id`,
-        `name`,
-        `type`,
-        `attrs`,
-        `mainPic`,
-        `morePic`,
-        `isOnShelf`,
-        `price`,
-        `descs`
-    )
-VALUES (
-        9,
-        '耳机',
-        '4',
-        '[{\"key\":\"颜色\",\"value\":\"粉色\"},{\"key\":\"用途\",\"value\":\"学习\"}]',
-        '\\upload\\1643096616332_61Kdho1yikS._AC_UL320_.jpg',
-        '\\upload\\1643096618651_61Kdho1yikS._AC_UL320_.jpg',
-        '1',
-        '100',
-        '<p>用途：学习，听歌<img src=\"\\upload\\1643096642355_61Kdho1yikS._AC_UL320_.jpg\" contenteditable=\"false\" style=\"font-size: 14px; max-width: 100%;\"/></p><p><br/></p>'
-    ), (
-        11,
-        'react',
-        '0',
-        '[{\"key\":\"出版社\",\"value\":\"太阳出版社\"},{\"key\":\"版本\",\"value\":\"最新版\"}]',
-        '\\upload\\1643098464374_51mWntLQ2PL._SX260_.jpg',
-        '\\upload\\1643098466258_51mWntLQ2PL._SX260_.jpg',
-        '1',
-        '120',
-        '<p>前端程序员必备</p>'
-    ), (
-        12,
-        'nodejs',
-        '0',
-        '[{\"key\":\"出版社\",\"value\":\"太阳出版社\"}]',
-        '\\upload\\1643098492991_B012A6EVCO.01._SCLZZZZZZZ_SX500_.jpg',
-        NULL,
-        '1',
-        '80',
-        '<p>前端程序员必备</p>'
-    ), (
-        15,
-        '炫酷键盘',
-        '4',
-        '[{\"key\":\"颜色\",\"value\":\"彩虹色\"},{\"key\":\"用途\",\"value\":\"学习\"}]',
-        '\\upload\\1643166650201_71cjIjAQMOL._AC_SL1500_.jpg',
-        '\\upload\\1643166651976_71ArFTaUM0L._AC_SL1500_.jpg,\\upload\\1643166654606_71qI-ciyV8L._AC_UL320_.jpg',
-        '1',
-        '260',
-        '<p>用途：<font color=\"#8baa4a\">学习，敲代码，玩游戏</font></p>'
-    ), (
-        18,
-        '少女键盘1',
-        '4',
-        '[{\"key\":\"颜色\",\"value\":\"粉色\"},{\"key\":\"用途\",\"value\":\"学习\"}]',
-        '\\upload\\1643169089760_61VfMDrYMmS._AC_SL1000_.jpg',
-        '\\upload\\1643169092083_71EFyKbGtxS._AC_SL1200_.jpg,\\upload\\1643169094554_71tsyBRd4qS._AC_UL320_.jpg',
-        '1',
-        '100',
-        '<p>用途：学习<img src=\"\\upload\\1643169083358_71EFyKbGtxS._AC_SL1200_.jpg\" contenteditable=\"false\" style=\"font-size: 14px; max-width: 100%;\"/></p>'
-    );
+INSERT INTO `menu` (`id`, `pid`, `name`, `linkUrl`, `openType`, `icon`, `isOfAdmin`) VALUES
+(5, -1, 'System Setting', '/', '1', 'SettingOutlined', '1'),
+(12, 5, 'Menu Management', '/setting/menu', '1', 'AlignLeftOutlined', '1'),
+(18, -1, 'Business Management', '/', '1', 'AlibabaOutlined', '2'),
+(20, 18, 'Product Management', '/business/product', '1', 'AccountBookOutlined', '2'),
+(21, 5, 'User management', '/setting/user', '1', 'UserAddOutlined', '1'),
+(22, 18, 'Business Overview', '/business/overview', '1', 'AreaChartOutlined', '2');
 
 -- --------------------------------------------------------
 
 --
-
--- 表的结构 `producttypesales`
-
+-- Structure de la table `product`
 --
 
-CREATE TABLE
-    `producttypesales` (
-        `name` text NOT NULL,
-        `value` int(11) NOT NULL
-    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+CREATE TABLE `product` (
+  `id` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `type` text NOT NULL,
+  `attrs` text NOT NULL,
+  `mainPic` text DEFAULT NULL,
+  `morePic` text DEFAULT NULL,
+  `isOnShelf` text NOT NULL,
+  `price` text DEFAULT NULL,
+  `descs` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
-
--- 转存表中的数据 `producttypesales`
-
+-- Déchargement des données de la table `product`
 --
 
-INSERT INTO
-    `producttypesales` (`name`, `value`)
-VALUES ('图书', 100000), ('数码', 300000), ('服装', 80000), ('电器', 500000), ('家具', 600000), ('食品', 100000), ('图书', 100000), ('数码', 300000), ('服装', 80000), ('电器', 500000), ('家具', 600000), ('食品', 100000);
+INSERT INTO `product` (`id`, `name`, `type`, `attrs`, `mainPic`, `morePic`, `isOnShelf`, `price`, `descs`) VALUES
+(2, 'iwatch', '4', '[{\"key\":\"color\",\"value\":\"pink\"}]', '\\upload\\1694884933138_iwatch1.JPG', '\\upload\\1694884939715_iwatch1.JPG', '1', '200', '<h3>Apple Watch (Series SE) 2020 GPS 40 mm - Aluminium Or - Bracelet sport Rose des sables</h3><p><img src=\"\\upload\\1694887096913_iwatch2.JPG\" style=\"max-width:100%;\" contenteditable=\"false\"/></p>'),
+(3, 'all you need to know about React.js', '0', '[{\"key\":\"Edition\",\"value\":\"2023\"}]', '\\upload\\1694886057789_react.JPG', '\\upload\\1694886064104_react.JPG', '1', '20', '<p>The Road to React: The React.js with Hooks in JavaScript Book (2023 Edition) - is a comprehensive and pragmatic yet concise React with Hooks (+ opt-in TypeScript) book. Purchase of this book includes free online access to the always up-to-date digital book.<br/></p>'),
+(4, 'node.js', '0', '[{\"key\":\"Author\",\"value\":\"Azat Mardan\"},{\"key\":\"Edition\",\"value\":\"2018\"}]', '\\upload\\1694886288690_node.JPG', '\\upload\\1694886293461_node.JPG', '1', '30', '<ul><li><p>Second edition fully updated for the latest versions of Node (6) and npm (3), making this one of the best and most up-to-date resources on the market</p></li><li><p>Written by successful author and speaker, Azat Mardan</p></li><li><p>Now includes Pug, Docker, and the latest versions of Express, Mongoose, Mocha and Hapi</p></li></ul>'),
+(5, 'sofa', '3', '[{\"key\":\"size\",\"value\":\"double\"},{\"key\":\"color\",\"value\":\"green\"}]', '\\upload\\1694886434774_sofa.JPG', '\\upload\\1694886439299_sofa.JPG', '1', '400', '<p>Upholstered in a sumptuous crushed chenille - a fuzzy cotton yarn of fabric that has pile protruding around the weave creating a caterpillar look. This luxuriously comfortable sofa features foam-filled seats, whilst the corner chaise section is the perfect place to put your feet up. Complete with seven cosy fibre-filled scatter cushions, this stunning compact corner sofa would be a great addition to any modern home. Bring a touch of glamour to your home with the Harriet collection.<br/></p><p><img src=\"\\upload\\1694887074696_sofa1.JPG\" style=\"max-width:100%;\" contenteditable=\"false\"/></p>');
 
 -- --------------------------------------------------------
 
 --
-
--- 表的结构 `province`
-
+-- Structure de la table `province`
 --
 
-CREATE TABLE
-    `province` (
-        `id` int(11) NOT NULL,
-        `label` text NOT NULL,
-        `value` text NOT NULL
-    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+CREATE TABLE `province` (
+  `id` int(11) NOT NULL,
+  `label` text NOT NULL,
+  `value` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
-
--- 转存表中的数据 `province`
-
+-- Déchargement des données de la table `province`
 --
 
-INSERT INTO
-    `province` (`id`, `label`, `value`)
-VALUES (1, '江苏省', 'jiangsu'), (2, '浙江省', 'zhejiang');
+INSERT INTO `province` (`id`, `label`, `value`) VALUES
+(1, 'ile-de-france', 'ile-de-france'),
+(2, 'Rhone-Alpes', 'Rhone-Alpes');
 
 -- --------------------------------------------------------
 
 --
-
--- 表的结构 `region`
-
+-- Structure de la table `region`
 --
 
-CREATE TABLE
-    `region` (
-        `id` int(11) NOT NULL,
-        `pid` int(11) NOT NULL,
-        `label` text NOT NULL,
-        `value` text NOT NULL
-    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+CREATE TABLE `region` (
+  `id` int(11) NOT NULL,
+  `pid` int(11) NOT NULL,
+  `label` text NOT NULL,
+  `value` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
-
--- 转存表中的数据 `region`
-
+-- Déchargement des données de la table `region`
 --
 
-INSERT INTO
-    `region` (`id`, `pid`, `label`, `value`)
-VALUES (111, 11, '浦口区', 'pukou'), (112, 11, '建邺区', 'jianye'), (121, 12, '姑苏区', 'gusu'), (211, 21, '上城区', 'shangcheng'), (221, 22, '龙湾区', 'longwan');
+INSERT INTO `region` (`id`, `pid`, `label`, `value`) VALUES
+(111, 11, 'Puteaux', 'Puteaux'),
+(112, 11, 'Paris', 'Paris'),
+(121, 12, 'Nanterre', 'Nanterre'),
+(211, 21, 'Neuilly-sur-seine', 'Neuilly-sur-seine'),
+(221, 22, 'Montrouge', 'Montrouge');
 
 -- --------------------------------------------------------
 
 --
-
--- 表的结构 `salestop10`
-
+-- Structure de la table `salestop10`
 --
 
-CREATE TABLE
-    `salestop10` (
-        `name` text NOT NULL,
-        `value` int(11) NOT NULL
-    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+CREATE TABLE `salestop10` (
+  `name` text NOT NULL,
+  `value` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
-
--- 转存表中的数据 `salestop10`
-
+-- Déchargement des données de la table `salestop10`
 --
 
-INSERT INTO
-    `salestop10` (`name`, `value`)
-VALUES ('百草味', 1000), ('维达', 1000), ('键盘', 2000), ('电脑', 2000), ('手机', 3000), ('化妆品', 4000), ('短靴', 5000), ('羊绒大衣', 6000), ('耳机', 8000), ('纸巾', 10000), ('百草味', 1000), ('维达', 1000), ('键盘', 2000), ('电脑', 2000), ('手机', 3000), ('化妆品', 4000), ('短靴', 5000), ('羊绒大衣', 6000), ('耳机', 8000), ('纸巾', 10000);
+INSERT INTO `salestop10` (`name`, `value`) VALUES
+('cookies', 1000),
+('drinks', 1000),
+('keyboard', 2000),
+('laptop', 2000),
+('smartphone', 3000),
+('cosmetics', 4000);
 
 -- --------------------------------------------------------
 
 --
-
--- 表的结构 `salestrend`
-
+-- Structure de la table `salestrend`
 --
 
-CREATE TABLE
-    `salestrend` (
-        `name` text NOT NULL,
-        `value` int(11) NOT NULL,
-        `type` text NOT NULL
-    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+CREATE TABLE `salestrend` (
+  `name` text NOT NULL,
+  `value` int(11) NOT NULL,
+  `type` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
-
--- 转存表中的数据 `salestrend`
-
+-- Déchargement des données de la table `salestrend`
 --
 
-INSERT INTO
-    `salestrend` (`name`, `value`, `type`)
-VALUES ('01-01', 1000, '1'), ('01-02', 2000, '1'), ('01-03', 2600, '1'), ('01-04', 3000, '1'), ('01-05', 4100, '1'), ('01-06', 4500, '1'), ('01-07', 5100, '1'), ('01-01', 10000, '2'), ('01-02', 13000, '2'), ('01-03', 18000, '2'), ('01-04', 16000, '2'), ('01-05', 20000, '2'), ('01-06', 26000, '2'), ('01-07', 36000, '2'), ('01-01', 1000, '1'), ('01-02', 2000, '1'), ('01-03', 2600, '1'), ('01-04', 3000, '1'), ('01-05', 4100, '1'), ('01-06', 4500, '1'), ('01-07', 5100, '1'), ('01-01', 10000, '2'), ('01-02', 13000, '2'), ('01-03', 18000, '2'), ('01-04', 16000, '2'), ('01-05', 20000, '2'), ('01-06', 26000, '2'), ('01-07', 36000, '2');
+INSERT INTO `salestrend` (`name`, `value`, `type`) VALUES
+('01-01', 1000, '1'),
+('01-02', 2000, '1'),
+('01-03', 2600, '1'),
+('01-04', 3000, '1');
 
 -- --------------------------------------------------------
 
 --
-
--- 表的结构 `statistics`
-
+-- Structure de la table `statistics`
 --
 
-CREATE TABLE
-    `statistics` (
-        `totalTurnover` int(11) NOT NULL,
-        `turnoverGrowth` text NOT NULL,
-        `totalQuantity` int(11) NOT NULL,
-        `quantityGrowth` text NOT NULL,
-        `totalVisited` int(11) NOT NULL,
-        `visitedGrowth` text NOT NULL,
-        `totalStats` int(11) NOT NULL,
-        `statsGrowth` text NOT NULL
-    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+CREATE TABLE `statistics` (
+  `totalTurnover` int(11) NOT NULL,
+  `turnoverGrowth` text NOT NULL,
+  `totalQuantity` int(11) NOT NULL,
+  `quantityGrowth` text NOT NULL,
+  `totalVisited` int(11) NOT NULL,
+  `visitedGrowth` text NOT NULL,
+  `totalStats` int(11) NOT NULL,
+  `statsGrowth` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
-
--- 转存表中的数据 `statistics`
-
+-- Déchargement des données de la table `statistics`
 --
 
-INSERT INTO
-    `statistics` (
-        `totalTurnover`,
-        `turnoverGrowth`,
-        `totalQuantity`,
-        `quantityGrowth`,
-        `totalVisited`,
-        `visitedGrowth`,
-        `totalStats`,
-        `statsGrowth`
-    )
-VALUES (
-        180000,
-        '15%',
-        26000,
-        '10%',
-        1005623,
-        '20%',
-        10236,
-        '5%'
-    ), (
-        180000,
-        '15%',
-        26000,
-        '10%',
-        1005623,
-        '20%',
-        10236,
-        '5%'
-    );
+INSERT INTO `statistics` (`totalTurnover`, `turnoverGrowth`, `totalQuantity`, `quantityGrowth`, `totalVisited`, `visitedGrowth`, `totalStats`, `statsGrowth`) VALUES
+(180000, '15%', 26000, '10%', 1005623, '20%', 10236, '5%');
 
 -- --------------------------------------------------------
 
 --
-
--- 表的结构 `test`
-
+-- Structure de la table `test`
 --
 
-CREATE TABLE
-    `test` (
-        `name` text NOT NULL,
-        `value` int(11) NOT NULL
-    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
-
---
-
--- 转存表中的数据 `test`
-
---
-
-INSERT INTO
-    `test` (`name`, `value`)
-VALUES ('test1', 10), ('test2', 20), ('test1', 10), ('test2', 20);
+CREATE TABLE `test` (
+  `test3` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
-
--- 表的结构 `user`
-
+-- Structure de la table `test1`
 --
 
-CREATE TABLE
-    `user` (
-        `id` int(11) NOT NULL,
-        `name` text NOT NULL,
-        `account` text NOT NULL,
-        `area` text NOT NULL,
-        `tel` text NOT NULL,
-        `email` text NOT NULL,
-        `picture` text DEFAULT NULL,
-        `relatedMenus` text DEFAULT NULL,
-        `password` text NOT NULL
-    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+CREATE TABLE `test1` (
+  `name` text NOT NULL,
+  `value` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
-
--- 转存表中的数据 `user`
-
+-- Déchargement des données de la table `test1`
 --
 
-INSERT INTO
-    `user` (
-        `id`,
-        `name`,
-        `account`,
-        `area`,
-        `tel`,
-        `email`,
-        `picture`,
-        `relatedMenus`,
-        `password`
-    )
-VALUES (
-        -1,
-        'administrator',
-        'admin',
-        '',
-        '',
-        '',
-        NULL,
-        NULL,
-        '123123'
-    ), (
-        10,
-        '用户1',
-        'user1',
-        'jiangsu,nanjig,jianye',
-        '15630639633',
-        '1101152873@qq.com',
-        '\\upload\\1642756962153_src=http___b-ssl.duitang.com_uploads_item_201611_17_20161117173627_NTJiW.thumb.700_0.jpeg&refer=http___b-ssl.duitang.jpg',
-        '24,25',
-        ''
-    ), (
-        11,
-        '用户2',
-        'user2',
-        'jiangsu,nanjig,pukou',
-        '15630639633',
-        '1101152873@qq.com',
-        '\\upload\\1642756988254_src=http___pic4.zhimg.com_v2-3a9150d24819e00a17ab348b55b7a5db_b.jpg&refer=http___pic4.zhimg.jpg',
-        NULL,
-        ''
-    ), (
-        12,
-        '用户3',
-        'user3',
-        'jiangsu,nanjig,pukou',
-        '15630639633',
-        '1101152873@qq.com',
-        '\\upload\\1642757875402_src=http___c-ssl.duitang.com_uploads_item_202006_25_20200625210505_jSZsN.thumb.1000_0.jpeg&refer=http___c-ssl.duitang.jpg',
-        NULL,
-        'd2dxCg-V'
-    ), (
-        13,
-        '用户4',
-        'user4',
-        'jiangsu,nanjig,pukou',
-        '15630639633',
-        '1101152873@qq.com',
-        '\\upload\\1643006135086_src=http___c-ssl.duitang.com_uploads_item_201712_08_20171208214551_AFQ2h.thumb.1000_0.jpeg&refer=http___c-ssl.duitang.jpg',
-        '24,25',
-        'q&89SPWT'
-    );
+INSERT INTO `test1` (`name`, `value`) VALUES
+('test_1', 10),
+('test_2', 20);
 
 -- --------------------------------------------------------
 
 --
-
--- 表的结构 `volumetop10`
-
+-- Structure de la table `trending`
 --
 
-CREATE TABLE
-    `volumetop10` (
-        `name` text NOT NULL,
-        `value` int(11) NOT NULL
-    ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
+CREATE TABLE `trending` (
+  `name` text NOT NULL,
+  `value` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
-
--- 转存表中的数据 `volumetop10`
-
+-- Déchargement des données de la table `trending`
 --
 
-INSERT INTO
-    `volumetop10` (`name`, `value`)
-VALUES ('book', 200000), ('ipod', 150000), ('keyboard', 100000), ('laptop', 98000), ('smartphone', 90000), ('cosmetics', 70000);
+INSERT INTO `trending` (`name`, `value`) VALUES
+('iPhone', 2000),
+('iWatch', 8000),
+('ipod', 5000),
+('Razer Huntsman', 2560),
+('Nike', 7100),
+('Addidas', 7000),
+('Yves Saint Laurent parfum', 1200);
+
+-- --------------------------------------------------------
 
 --
+-- Structure de la table `user`
+--
 
--- 转储表的索引
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `name` text NOT NULL,
+  `account` text NOT NULL,
+  `area` text NOT NULL,
+  `tel` text NOT NULL,
+  `email` text NOT NULL,
+  `picture` text DEFAULT NULL,
+  `relatedMenus` text DEFAULT NULL,
+  `password` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `user`
+--
+
+INSERT INTO `user` (`id`, `name`, `account`, `area`, `tel`, `email`, `picture`, `relatedMenus`, `password`) VALUES
+(-1, 'administrator', 'admin', '', '', '', NULL, NULL, '123123'),
+(1, 'user1', 'koko', 'jiangsu,suzhou,gusu', '0751626134', 'jeggycool@gmail.com', NULL, '18,20', 'E6XdpNJe'),
+(2, 'something like this', 'user', 'zhejiang,hangzhou,shangcheng', '0751626135', 'jeggyep@gmail.com', '\\upload\\1694362358490_little_jing.JPG', NULL, 'NpqGJLcE'),
+(4, 'gigi_ko', 'user3', 'Rhone-Alpes,wenzhou,Montrouge', '0751626140', 'blablabla@gmail.com', '\\upload\\1694464308710_Capture.JPG', NULL, '%&LMBuyv');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `volumetop10`
+--
+
+CREATE TABLE `volumetop10` (
+  `name` text NOT NULL,
+  `value` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `volumetop10`
+--
+
+INSERT INTO `volumetop10` (`name`, `value`) VALUES
+('book', 200000),
+('ipod', 150000),
+('keyboard', 100000),
+('laptop', 98000),
+('smartphone', 90000),
+('cosmetics', 70000);
+
+--
+-- Index pour les tables déchargées
 --
 
 --
-
--- 表的索引 `menu`
+-- Index pour la table `menu`
+--
+ALTER TABLE `menu`
+  ADD PRIMARY KEY (`id`);
 
 --
-
-ALTER TABLE `menu` ADD PRIMARY KEY (`id`);
+-- Index pour la table `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`id`);
 
 --
-
--- 表的索引 `product`
+-- Index pour la table `province`
+--
+ALTER TABLE `province`
+  ADD PRIMARY KEY (`id`);
 
 --
-
-ALTER TABLE `product` ADD PRIMARY KEY (`id`);
+-- Index pour la table `region`
+--
+ALTER TABLE `region`
+  ADD PRIMARY KEY (`id`);
 
 --
-
--- 表的索引 `province`
+-- Index pour la table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
 
 --
-
-ALTER TABLE `province` ADD PRIMARY KEY (`id`);
-
---
-
--- 表的索引 `region`
-
---
-
-ALTER TABLE `region` ADD PRIMARY KEY (`id`);
-
---
-
--- 表的索引 `user`
-
---
-
-ALTER TABLE `user` ADD PRIMARY KEY (`id`);
-
---
-
--- 在导出的表使用AUTO_INCREMENT
-
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
-
--- 使用表AUTO_INCREMENT `menu`
+-- AUTO_INCREMENT pour la table `menu`
+--
+ALTER TABLE `menu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
-
-ALTER TABLE
-    `menu` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
-    AUTO_INCREMENT = 27;
+-- AUTO_INCREMENT pour la table `product`
+--
+ALTER TABLE `product`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
-
--- 使用表AUTO_INCREMENT `product`
+-- AUTO_INCREMENT pour la table `province`
+--
+ALTER TABLE `province`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
-
-ALTER TABLE
-    `product` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
-    AUTO_INCREMENT = 19;
+-- AUTO_INCREMENT pour la table `region`
+--
+ALTER TABLE `region`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=223;
 
 --
-
--- 使用表AUTO_INCREMENT `province`
-
+-- AUTO_INCREMENT pour la table `user`
 --
-
-ALTER TABLE
-    `province` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
-    AUTO_INCREMENT = 3;
-
---
-
--- 使用表AUTO_INCREMENT `region`
-
---
-
-ALTER TABLE
-    `region` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
-    AUTO_INCREMENT = 222;
-
---
-
--- 使用表AUTO_INCREMENT `user`
-
---
-
-ALTER TABLE
-    `user` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
-    AUTO_INCREMENT = 14;
-
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */
-
-;
-
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */
-
-;
-
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */
-
-;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
