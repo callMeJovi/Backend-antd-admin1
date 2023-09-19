@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const PORT = process.env.PORT || 3030;
 const menu = require("./routes/menu");
 const main = require("./routes/main");
 const area = require("./routes/area");
@@ -28,6 +29,6 @@ app.use(function (err, req, res, next) {
   res.status("500").send("Server Error");
 });
 
-app.listen("3030", function () {
+app.listen(PORT, function () {
   console.log("Server is connected to port 3030");
 });
